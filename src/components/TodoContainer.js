@@ -20,7 +20,7 @@ class TodoContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>todo</h1>
+        <h2>Hello World!</h2>
         <ul>
           {this.state.todos.map((todo) => (
             <li>{todo.title}</li>

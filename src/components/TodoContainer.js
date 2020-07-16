@@ -22,7 +22,7 @@ class TodoContainer extends React.Component {
     return (
       <div>
         <h2>Hello World!</h2>
-        <ul>
+        <ul className="todo-list">
           {this.state.todos.map((todo) => (
             // <li key={todo.id}>{todo.title}</li>
             <TodoItem key={todo.id} title={todo.title} />

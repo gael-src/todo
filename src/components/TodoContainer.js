@@ -19,6 +19,18 @@ class TodoContainer extends React.Component {
     ],
   };
 
+  onChangeCheckbox = (id) => {
+    console.log(id);
+    this.setState(
+      this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
+
   render() {
     return (
       <div>
@@ -26,7 +38,13 @@ class TodoContainer extends React.Component {
         <ul className="todo-list">
           {this.state.todos.map((todo) => (
             // <li key={todo.id}>{todo.title}</li>
-            <TodoItem key={todo.id} title={todo.title} />
+            <TodoItem
+              key={todo.id}
+              title={todo.title}
+              completed={todo.completed}
+              id={todo.id}
+              handleChange={this.onChangeCheckbox}
+            />
           ))}
         </ul>
       </div>

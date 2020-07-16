@@ -1,9 +1,15 @@
 import React from "react";
 
-class TodoItem extends React.Component {
-  render() {
-    return <li>{this.props.title}</li>;
-  }
-}
+// CLASS COMPONENT
+// class TodoItem extends React.Component {
+//   render() {
+//     return <li>{this.props.title}</li>;
+//   }
+// }
+
+// FUNCTIONAL COMPONENT
+const TodoItem = (props) => {
+  return <li>{props.title}</li>;
+};
 
 export default TodoItem;

@@ -1,5 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem";
+import Header from "./Header";
 
 // CLASS COMPONENT
 class TodoContainer extends React.Component {
@@ -21,7 +22,7 @@ class TodoContainer extends React.Component {
   render() {
     return (
       <div>
-        <h2>Hello World!</h2>
+        <Header />
         <ul className="todo-list">
           {this.state.todos.map((todo) => (
             // <li key={todo.id}>{todo.title}</li>

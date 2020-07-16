@@ -1,4 +1,5 @@
 import React from "react";
+import TodoItem from "./TodoItem";
 
 // CLASS COMPONENT
 class TodoContainer extends React.Component {
@@ -23,7 +24,8 @@ class TodoContainer extends React.Component {
         <h2>Hello World!</h2>
         <ul>
           {this.state.todos.map((todo) => (
-            <li>{todo.title}</li>
+            // <li key={todo.id}>{todo.title}</li>
+            <TodoItem key={todo.id} title={todo.title} />
           ))}
         </ul>
       </div>

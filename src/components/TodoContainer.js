@@ -19,7 +19,8 @@ class TodoContainer extends React.Component {
 		],
 	};
 
-	onChangeCheckbox = (id) => {
+	handleChange = (id) => {
+		// console.log("hello");
 		// console.log(id);
 		this.setState(
 			this.state.todos.map((todo) => {
@@ -31,9 +32,14 @@ class TodoContainer extends React.Component {
 		);
 	};
 
+	addTask = (id) => {
+		// console.log("hello");
+		console.log(id);
+	};
+
 	deleteTask = (id) => {
+		// console.log("hello");
 		// console.log(id);
-		console.log("hello");
 
 		const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
 		this.setState({
@@ -52,14 +58,14 @@ class TodoContainer extends React.Component {
 							title={todo.title}
 							completed={todo.completed}
 							id={todo.id}
-							handleChange={this.onChangeCheckbox}
+							handleChange={this.handleChange}
 							deleteTask={this.deleteTask}
 						/>
 					))}
 				</ul>
 				<form className="task-form" action="#">
 					<label htmlFor="#">Add a task:</label>
-					<input type="text" />
+					<input type="text" onChange={this.addTask} />
 				</form>
 			</div>
 		);

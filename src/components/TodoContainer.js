@@ -5,6 +5,9 @@ import Header from "./Header";
 // CLASS COMPONENT
 class TodoContainer extends React.Component {
 	state = {
+		id: "",
+		title: "",
+		completed: false,
 		todos: [
 			{
 				id: 1,
@@ -22,6 +25,7 @@ class TodoContainer extends React.Component {
 	handleChange = (id) => {
 		// console.log("hello");
 		// console.log(id);
+
 		this.setState(
 			this.state.todos.map((todo) => {
 				if (todo.id === id) {
@@ -32,9 +36,32 @@ class TodoContainer extends React.Component {
 		);
 	};
 
-	addTask = (id) => {
+	addTask = (event) => {
 		// console.log("hello");
-		console.log(id);
+		console.log(event.target.value);
+
+		this.setState({ title: event.target.value });
+	};
+
+	submitTask = (event) => {
+		// console.log("hello");
+		// console.log(event);
+		event.preventDefault();
+		const currentTask = {
+			id: `1${Date.now()}`,
+			title: this.state.title,
+			completed: false,
+		};
+		const todosState = this.state.todos;
+		// PUSH INTO LIST
+		todosState.push(currentTask);
+		// RESET COMMENT AND NAME IN STATE
+		this.setState({
+			id: `1${Date.now()}`,
+			comment: "",
+			name: "",
+			todos: todosState,
+		});
 	};
 
 	deleteTask = (id) => {
@@ -42,6 +69,7 @@ class TodoContainer extends React.Component {
 		// console.log(id);
 
 		const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
+
 		this.setState({
 			todos: updatedTodosArray,
 		});
@@ -65,7 +93,8 @@ class TodoContainer extends React.Component {
 				</ul>
 				<form className="task-form" action="#">
 					<label htmlFor="#">Add a task:</label>
-					<input type="text" onChange={this.addTask} />
+					<input type="text" value={this.state.title} onChange={this.addTask} />
+					<button onClick={this.submitTask}>Submit</button>
 				</form>
 			</div>
 		);

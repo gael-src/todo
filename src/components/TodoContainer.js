@@ -32,8 +32,13 @@ class TodoContainer extends React.Component {
 	};
 
 	deleteTask = (id) => {
-		console.log(id);
+		// console.log(id);
 		console.log("hello");
+
+		const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
+		this.setState({
+			todos: updatedTodosArray,
+		});
 	};
 
 	render() {

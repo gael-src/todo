@@ -5,11 +5,13 @@ const TodoItem = (props) => {
 	return (
 		<li className="li-task">
 			{props.title}
+
 			<input
 				type="checkbox"
 				checked={props.completed}
 				onChange={() => props.handleChange(props.id)}
 			></input>
+
 			<button
 				// onClick={props.deleteTask}
 				onClick={() => {

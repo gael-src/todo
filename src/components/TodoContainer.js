@@ -46,7 +46,8 @@ class TodoContainer extends React.Component {
 			title: title,
 			completed: false,
 		};
-		const todosState = this.state.todos;
+		// const todosState = this.state.todos;
+		const todosState = [...this.state.todos];
 
 		// PUSH INTO LIST
 		todosState.push(currentTask);

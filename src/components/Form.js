@@ -33,8 +33,8 @@ class Form extends React.Component {
 					type="text"
 					value={this.state.title}
 					onChange={this.addTask}
-					minLength={3}
-					maxLength={6}
+					minLength="3"
+					maxLength="6"
 				/>
 				<button onClick={this.submitTask}>Submit</button>
 			</form>

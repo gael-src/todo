@@ -8,10 +8,12 @@ class Form extends React.Component {
 		};
 	}
 
+	// ADD TASK
 	addTask = (event) => {
 		this.setState({ title: event.target.value.toUpperCase() });
 	};
 
+	// SUBMIT TASK
 	submitTask = (event) => {
 		event.preventDefault();
 

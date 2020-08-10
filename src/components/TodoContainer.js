@@ -25,7 +25,8 @@ class TodoContainer extends React.Component {
 		};
 	}
 
-	handleChange = (id) => {
+	// TASK CHECKBOX
+	taskStatus = (id) => {
 		const updatedTodosArr = this.state.todos.map((todo) => {
 			if (todo.id === id) {
 				todo.completed = !todo.completed;
@@ -46,7 +47,6 @@ class TodoContainer extends React.Component {
 			title: title,
 			completed: false,
 		};
-		// const todosState = this.state.todos;
 		const todosState = [...this.state.todos];
 
 		// PUSH INTO LIST
@@ -84,7 +84,7 @@ class TodoContainer extends React.Component {
 							title={todo.title}
 							completed={todo.completed}
 							id={todo.id}
-							handleChange={this.handleChange}
+							taskStatus={this.taskStatus}
 							deleteTask={this.deleteTask}
 						/>
 					))}

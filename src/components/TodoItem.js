@@ -10,7 +10,7 @@ const TodoItem = (props) => {
 				type="checkbox"
 				checked={props.completed}
 				onChange={() => {
-					props.handleChange(props.id);
+					props.taskStatus(props.id);
 				}}
 			></input>
 

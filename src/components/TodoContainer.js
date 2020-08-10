@@ -40,8 +40,7 @@ class TodoContainer extends React.Component {
 
 	// ADD TASK
 	addTaskItem = (title) => {
-		console.log("hello");
-
+		// CURRENT TASK AND STATE TODOS
 		const currentTask = {
 			id: `1${Date.now()}`,
 			title: title,

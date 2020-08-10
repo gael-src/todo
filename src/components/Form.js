@@ -17,7 +17,7 @@ class Form extends React.Component {
 
 		this.props.addTaskItem(this.state.title);
 
-		// RESET COMMENT AND NAME IN STATE
+		// RESET INPUT
 		this.setState({
 			title: "",
 		});
@@ -27,7 +27,13 @@ class Form extends React.Component {
 		return (
 			<form className="task-form" action="#">
 				<label htmlFor="#">Add a task:</label>
-				<input type="text" value={this.state.title} onChange={this.addTask} />
+				<input
+					type="text"
+					value={this.state.title}
+					onChange={this.addTask}
+					minLength={3}
+					maxLength={6}
+				/>
 				<button onClick={this.submitTask}>Submit</button>
 			</form>
 		);

@@ -7,9 +7,6 @@ class TodoContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// id: "",
-			// title: "",
-			// completed: false,
 			todos: [
 				{
 					id: 1,

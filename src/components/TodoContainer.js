@@ -57,9 +57,8 @@ class TodoContainer extends React.Component {
 		todosState.push(currentTask);
 		// RESET COMMENT AND NAME IN STATE
 		this.setState({
-			id: `1${Date.now()}`,
-			comment: "",
-			name: "",
+			id: "",
+			title: "",
 			todos: todosState,
 		});
 	};

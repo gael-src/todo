@@ -16,7 +16,7 @@ const Header = () => {
 					color: "yellow",
 				}}
 			>
-				Hello World!
+				React Learning to do's
 			</h2>
 		</div>
 	);

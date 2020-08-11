@@ -11,12 +11,12 @@ class TodoContainer extends React.Component {
 			todos: [
 				{
 					id: uuidv4(),
-					title: "Learn React",
+					title: "Read React doc",
 					completed: false,
 				},
 				{
 					id: uuidv4(),
-					title: "Refresh JS",
+					title: "Make a to-do",
 					completed: false,
 				},
 			],

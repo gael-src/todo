@@ -1,10 +1,16 @@
 import React from "react";
+import "../css/todoItem.scss";
 
 // FUNCTIONAL COMPONENT
 const TodoItem = (props) => {
+	// PROPS WRITING ALTERNATIVE
+	// const { completed, handleChange, deleteTodoHandler, title, id } = props;
 	return (
 		<li className="li-task">
-			{props.title}
+			{/* ALTERNATIVE TO IN-LINE STYLE */}
+			<span className={props.completed ? "completed-item" : null}>
+				{props.title}
+			</span>
 
 			<input
 				type="checkbox"

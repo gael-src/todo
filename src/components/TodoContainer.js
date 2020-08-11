@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
+import { v4 as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
 	constructor(props) {
@@ -9,12 +10,12 @@ class TodoContainer extends React.Component {
 		this.state = {
 			todos: [
 				{
-					id: 1,
+					id: uuidv4(),
 					title: "Learn React",
 					completed: false,
 				},
 				{
-					id: 2,
+					id: uuidv4(),
 					title: "Refresh JS",
 					completed: false,
 				},
@@ -40,7 +41,7 @@ class TodoContainer extends React.Component {
 	addTaskItem = (title) => {
 		// CURRENT TASK AND STATE TODOS
 		const currentTask = {
-			id: `1${Date.now()}`,
+			id: uuidv4(),
 			title: title,
 			completed: false,
 		};

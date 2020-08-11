@@ -2,24 +2,33 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 class TodoContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			todos: [
-				{
-					id: uuidv4(),
-					title: "Read React doc",
-					completed: false,
-				},
-				{
-					id: uuidv4(),
-					title: "Make a to-do",
-					completed: false,
-				},
-			],
+			todos: [],
 		};
+	}
+
+	componentDidMount() {
+		console.log("Component did mount");
+		axios
+			.get("https://jsonplaceholder.typicode.com/todos", {
+				params: { _limit: 10 },
+			})
+			.then((response) => {
+				console.log(response.data);
+				this.setState({
+					todos: response.data,
+				});
+			});
+		// ADD JSON TODO
+	}
+
+	componentDidUpdate() {
+		console.log("Component did update");
 	}
 
 	// TASK CHECKBOX
@@ -65,6 +74,7 @@ class TodoContainer extends React.Component {
 	};
 
 	render() {
+		console.log("Component render");
 		return (
 			<div>
 				{/* TASK INPUT */}

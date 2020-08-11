@@ -13,6 +13,7 @@ const TodoItem = (props) => {
 			</span>
 
 			<input
+				className="check-box"
 				type="checkbox"
 				checked={props.completed}
 				onChange={() => {

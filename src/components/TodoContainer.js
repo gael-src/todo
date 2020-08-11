@@ -13,22 +13,22 @@ class TodoContainer extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("Component did mount");
+		// console.log("Component did mount");
 		axios
 			.get("https://jsonplaceholder.typicode.com/todos", {
 				params: { _limit: 10 },
 			})
 			.then((response) => {
-				console.log(response.data);
+				// console.log(response.data);
+				// ADD JSON TODO
 				this.setState({
 					todos: response.data,
 				});
 			});
-		// ADD JSON TODO
 	}
 
 	componentDidUpdate() {
-		console.log("Component did update");
+		// console.log("Component did update");
 	}
 
 	// TASK CHECKBOX
@@ -74,7 +74,7 @@ class TodoContainer extends React.Component {
 	};
 
 	render() {
-		console.log("Component render");
+		// console.log("Component render");
 		return (
 			<div>
 				{/* TASK INPUT */}

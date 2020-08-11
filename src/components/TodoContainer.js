@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
 import { v4 as uuidv4 } from "uuid";
@@ -68,9 +67,6 @@ class TodoContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				{/* HEADER */}
-				<Header />
-
 				{/* TASK INPUT */}
 				<Form addTaskItem={this.addTaskItem} />
 

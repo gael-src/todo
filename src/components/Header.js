@@ -13,7 +13,7 @@ const Header = () => {
 				style={{
 					textAlign: "center",
 					margin: "22px",
-					color: "yellow",
+					color: "green",
 				}}
 			>
 				React Learning to do's

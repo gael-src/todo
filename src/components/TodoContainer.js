@@ -8,14 +8,28 @@ class TodoContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			todos: [],
+			todos: [
+				{
+					id: uuidv4(),
+					title: "Read React Doc",
+					completed: false,
+				},
+				{
+					id: uuidv4(),
+					title: "Make todo",
+					completed: false,
+				},
+			],
 		};
 	}
 
 	componentDidMount() {
 		// console.log("Component did mount");
 		axios
-			.get("https://jsonplaceholder.typicode.com/todos", {
+			// .get("https://jsonplaceholder.typicode.com/todos", {
+			// 	params: { _limit: 10 },
+			// })
+			.get("http://localhost:5000/", {
 				params: { _limit: 10 },
 			})
 			.then((response) => {

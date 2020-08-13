@@ -9,16 +9,16 @@ class TodoContainer extends React.Component {
 		super(props);
 		this.state = {
 			todos: [
-				{
-					id: uuidv4(),
-					title: "Read React Doc",
-					completed: false,
-				},
-				{
-					id: uuidv4(),
-					title: "Make todo",
-					completed: false,
-				},
+				// {
+				// 	id: uuidv4(),
+				// 	title: "Read React Doc",
+				// 	completed: false,
+				// },
+				// {
+				// 	id: uuidv4(),
+				// 	title: "Make todo",
+				// 	completed: false,
+				// },
 			],
 		};
 	}
@@ -29,11 +29,9 @@ class TodoContainer extends React.Component {
 			// .get("https://jsonplaceholder.typicode.com/todos", {
 			// 	params: { _limit: 10 },
 			// })
-			.get("http://localhost:5000/", {
-				params: { _limit: 10 },
-			})
+			.get("http://localhost:3001/Tasks")
 			.then((response) => {
-				// console.log(response.data);
+				console.log(response.data);
 				// ADD JSON TODO
 				this.setState({
 					todos: response.data,
@@ -98,10 +96,10 @@ class TodoContainer extends React.Component {
 				<ul className="todo-list">
 					{this.state.todos.map((todo) => (
 						<TodoItem
-							key={todo.id}
+							key={todo._id}
 							title={todo.title}
 							completed={todo.completed}
-							id={todo.id}
+							id={todo._id}
 							taskStatus={this.taskStatus}
 							deleteTask={this.deleteTask}
 						/>

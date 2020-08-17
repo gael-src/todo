@@ -22,6 +22,14 @@ const Form = (props) => {
 	// SUBMIT TASK
 	const submitTask = (event) => {
 		event.preventDefault();
+
+		// CHECK FOR @ SIGN
+		if (title.includes("@")) {
+			setInvalidCharacter(true);
+		} else {
+			setInvalidCharacter(false);
+		}
+
 		// LENGTH CHECK
 		if (title.length > 3 && title.length < 25) {
 			// SET STATE
@@ -33,13 +41,6 @@ const Form = (props) => {
 		} else {
 			// RESET INPUT
 			setCorrectLength(true);
-		}
-
-		// CHECK FOR @ SIGN
-		if (title.includes("@")) {
-			setInvalidCharacter(true);
-		} else {
-			setInvalidCharacter(false);
 		}
 	};
 

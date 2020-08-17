@@ -51,12 +51,15 @@ class TodoContainer extends React.Component {
 			this.setState({
 				timeToGetBusy: true,
 			});
-		} else if (this.state.todos.length < 5 && this.state.timeToGetBusy === true) {
+		} else if (
+			this.state.todos.length < 5 &&
+			this.state.timeToGetBusy === true
+		) {
 			this.setState({
 				timeToGetBusy: false,
 			});
 		} else {
-			return
+			return;
 		}
 	}
 

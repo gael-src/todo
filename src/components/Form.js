@@ -6,6 +6,7 @@ const Form = (props) => {
 	const [title, setTitle] = useState("");
 	const [correctLength, setCorrectLength] = useState(true);
 
+	// HANDLER
 	const onChangeHandler = (e) => {
 		setTitle(e.target.value);
 	};
@@ -34,33 +35,14 @@ const Form = (props) => {
 		}
 	};
 
-	//
 	return (
 		<form className="task-form" action="#">
 			<label htmlFor="#">Add a task:</label>
 			<input type="text" value={title} onChange={addTask} />
-			{correctLength ? null : (
-				<p>Task musst be between 3 and 25 length</p>
-			)}
+			{correctLength ? null : <p>Task musst be between 3 and 25 length</p>}
 			<button onClick={submitTask}>Submit</button>
 		</form>
 	);
-
-	// console.log(title);
-	// return <div>Ich bin todo item</div>;
 };
-
-// class Form extends React.Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			title: "",
-// 			correctLength: true,
-// 		};
-// 	}
-
-// 	
-
-// }
 
 export default Form;

@@ -1,53 +1,66 @@
-import React from "react";
+import React, { Component, useState } from "react";
 
-class Form extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			title: "",
-			correctLength: true,
-		};
-	}
+const Form = (props) => {
+	console.log(useState("hello"));
+
+	const [title, setTitle] = useState("");
+	const [correctLength, setCorrectLength] = useState(true);
+
+	const onChangeHandler = (e) => {
+		setTitle(e.target.value);
+	};
 
 	// ADD TASK
-	addTask = (event) => {
-		this.setState({ title: event.target.value });
+	const addTask = (event) => {
+		// this.setState({ title: event.target.value });
+		setTitle(event.target.value);
 	};
 
 	// SUBMIT TASK
-	submitTask = (event) => {
+	const submitTask = (event) => {
 		event.preventDefault();
 
 		// LENGTH CHECK
-		if (this.state.title.length > 3 && this.state.title.length < 25) {
+		if (title.length > 3 && title.length < 25) {
 			// SET STATE
-			this.props.addTaskItem(this.state.title);
+			props.addTaskItem(title);
 
 			// RESET INPUT
-			this.setState({
-				title: "",
-				correctLength: true,
-			});
+			setCorrectLength(true);
+			setTitle("");
 		} else {
 			// RESET INPUT
-			this.setState({
-				correctLength: false,
-			});
+			setCorrectLength(false);
 		}
 	};
 
-	render() {
-		return (
-			<form className="task-form" action="#">
-				<label htmlFor="#">Add a task:</label>
-				<input type="text" value={this.state.title} onChange={this.addTask} />
-				{this.state.correctLength ? null : (
-					<p>Task musst be between 3 and 25 length</p>
-				)}
-				<button onClick={this.submitTask}>Submit</button>
-			</form>
-		);
-	}
-}
+	//
+	return (
+		<form className="task-form" action="#">
+			<label htmlFor="#">Add a task:</label>
+			<input type="text" value={title} onChange={addTask} />
+			{correctLength ? null : (
+				<p>Task musst be between 3 and 25 length</p>
+			)}
+			<button onClick={submitTask}>Submit</button>
+		</form>
+	);
+
+	// console.log(title);
+	// return <div>Ich bin todo item</div>;
+};
+
+// class Form extends React.Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			title: "",
+// 			correctLength: true,
+// 		};
+// 	}
+
+// 	
+
+// }
 
 export default Form;

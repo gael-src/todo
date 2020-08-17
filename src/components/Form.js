@@ -1,4 +1,5 @@
-import React, { Component, useState } from "react";
+// import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 const Form = (props) => {
 	console.log(useState("hello"));
@@ -8,9 +9,9 @@ const Form = (props) => {
 	const [invalidCharacter, setInvalidCharacter] = useState(false);
 
 	// HANDLER
-	const onChangeHandler = (e) => {
-		setTitle(e.target.value);
-	};
+	// const onChangeHandler = (e) => {
+	// 	setTitle(e.target.value);
+	// };
 
 	// ADD TASK
 	const addTask = (event) => {
@@ -21,24 +22,24 @@ const Form = (props) => {
 	// SUBMIT TASK
 	const submitTask = (event) => {
 		event.preventDefault();
-
 		// LENGTH CHECK
-		if (title.includes("@")) {
-			// CHECK FOR @ SIGN
-			setInvalidCharacter(true);
-		} else {
-			setInvalidCharacter(false);
-		}
 		if (title.length > 3 && title.length < 25) {
 			// SET STATE
 			props.addTaskItem(title);
 
 			// RESET INPUT
-			setCorrectLength(true);
+			setCorrectLength(false);
 			setTitle("");
 		} else {
 			// RESET INPUT
-			setCorrectLength(false);
+			setCorrectLength(true);
+		}
+
+		// CHECK FOR @ SIGN
+		if (title.includes("@")) {
+			setInvalidCharacter(true);
+		} else {
+			setInvalidCharacter(false);
 		}
 	};
 
@@ -47,8 +48,8 @@ const Form = (props) => {
 			<label htmlFor="#">Add a task:</label>
 			<input type="text" value={title} onChange={addTask} />
 
-			{correctLength ? <p>Task musst be between 3 and 25 length</p> : null }
-			{invalidCharacter ? <p>Please don't use @ in your Todos!</p> : null }
+			{correctLength ? <p>Task musst be between 3 and 25 length</p> : null}
+			{invalidCharacter ? <p>Please don't use @ in your Todos!</p> : null}
 			<button onClick={submitTask}>Submit</button>
 		</form>
 	);

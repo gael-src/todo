@@ -22,7 +22,10 @@ const Form = (props) => {
 		event.preventDefault();
 
 		// LENGTH CHECK
-		if (title.length > 3 && title.length < 25) {
+		if (title.includes("@")) {
+			// CHECK FOR @ SIGN
+			alert("Please don't use @ sign");
+		} else if (title.length > 3 && title.length < 25) {
 			// SET STATE
 			props.addTaskItem(title);
 

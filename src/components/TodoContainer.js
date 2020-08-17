@@ -22,6 +22,7 @@ class TodoContainer extends React.Component {
 				// },
 			],
 			isLoading: false,
+			timeToGetBusy: false,
 		};
 	}
 
@@ -43,8 +44,20 @@ class TodoContainer extends React.Component {
 	}
 
 	// UPDATE
-	componentDidUpdate() {
+	componentDidUpdate(response) {
 		console.log("Component did update");
+		console.log(response);
+		if (this.state.todos.length > 5 && this.state.timeToGetBusy === false) {
+			this.setState({
+				timeToGetBusy: true,
+			});
+		} else if (this.state.todos.length < 5 && this.state.timeToGetBusy === true) {
+			this.setState({
+				timeToGetBusy: false,
+			});
+		} else {
+			return
+		}
 	}
 
 	// TASK CHECKBOX
@@ -91,21 +104,6 @@ class TodoContainer extends React.Component {
 			});
 
 		return;
-		// CURRENT TASK AND STATE TODOS
-		// const currentTask = {
-		// 	id: uuidv4(),
-		// 	title: title,
-		// 	completed: false,
-		// };
-		// const todosState = [...this.state.todos];
-
-		// PUSH INTO LIST
-		// todosState.push(currentTask);
-
-		// RESET COMMENT AND NAME IN STATE
-		// this.setState({
-		// 	todos: todosState,
-		// });
 	};
 
 	// DELETE TASK
@@ -115,41 +113,19 @@ class TodoContainer extends React.Component {
 			.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 			.then((response) => {
 				console.log(response);
-				// DELETE TASK
-				const updatedTodosArray = this.state.todos.filter(
-					(item) => item.id !== id
-				);
 
+				const updatedTodosArr = this.state.todos.filter(
+					(todo) => todo.id !== id
+				);
 				this.setState({
-					todos: updatedTodosArray,
+					todos: updatedTodosArr,
 					isLoading: false,
 				});
 			})
-			// .then((response) => {
-			// 	console.log(response.data);
-
-			// 	// const todosState = [...this.state.todos];
-			// 	// todosState.unshift(response.data);
-
-			// 	// this.setState({
-			// 	// 	todos: response.data,
-			// 	// 	// TASK IS LOADING MESSAGE
-			// 	// 	isLoading: false,
-			// 	// });
-			// })
 			.catch((err) => {
-				// SIMPLE Error-Handling
-				// MORE:
-				// https://www.intricatecloud.io/2020/03/how-to-handle-api-errors-in-your-web-app-using-axios/
-				alert("Beim entfernen gab es einen Fehler: " + err.response);
+				alert("Beim Entfernen gab es einen Fehler: " + err.response);
 				console.error(err);
 			});
-
-		// const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
-
-		// this.setState({
-		// 	todos: updatedTodosArray,
-		// });
 	};
 
 	render() {
@@ -157,7 +133,7 @@ class TodoContainer extends React.Component {
 		return (
 			<div style={this.state.isLoading ? { opacity: 0.3 } : null}>
 				{/* HEADER */}
-				<Header timeToGetBusy />
+				<Header timeToGetBusy={this.state.timeToGetBusy} />
 
 				{/* TASK INPUT */}
 				<Form addTaskItem={this.addTaskItem} />
@@ -169,10 +145,10 @@ class TodoContainer extends React.Component {
 				<ul className="todo-list">
 					{this.state.todos.map((todo) => (
 						<TodoItem
-							key={todo._id}
+							key={todo.id}
 							title={todo.title}
 							completed={todo.completed}
-							id={todo._id}
+							id={todo.id}
 							taskStatus={this.taskStatus}
 							deleteTask={this.deleteTask}
 						/>

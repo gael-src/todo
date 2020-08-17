@@ -1,15 +1,15 @@
 import React from "react";
 
-const Header = () => {
+const Header = (props) => {
 	const h1Style = {
 		textAlign: "center",
 		margin: "30px",
 		color: "green",
 	};
 	return (
-		<div>
+		<header>
 			<h1 style={h1Style}>todo</h1>
-			<p style={h1Style}>Time to get busy!</p>
+			{props.timeToGetBusy ? <p style={h1Style}>Time to get busy!</p> : null}
 			<h2
 				style={{
 					textAlign: "center",
@@ -19,7 +19,7 @@ const Header = () => {
 			>
 				React Learning to do's
 			</h2>
-		</div>
+		</header>
 	);
 };
 

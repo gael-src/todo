@@ -1,6 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
+import Header from "./Header";
 // import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
@@ -20,10 +21,11 @@ class TodoContainer extends React.Component {
 				// 	completed: false,
 				// },
 			],
-			isLoading: false
+			isLoading: false,
 		};
 	}
 
+	// DID MOUNT
 	componentDidMount() {
 		// console.log("Component did mount");
 		axios
@@ -40,8 +42,9 @@ class TodoContainer extends React.Component {
 			});
 	}
 
+	// UPDATE
 	componentDidUpdate() {
-		// console.log("Component did update");
+		console.log("Component did update");
 	}
 
 	// TASK CHECKBOX
@@ -62,11 +65,12 @@ class TodoContainer extends React.Component {
 	addTaskItem = (title) => {
 		// TASK IS LOADING MESSAGE
 		this.setState({ isLoading: true });
-		axios.post("https://jsonplaceholder.typicode.com/todos", {
-			title: title,
-			completed: false,
-		})
-			.then(response => {
+		axios
+			.post("https://jsonplaceholder.typicode.com/todos", {
+				title: title,
+				completed: false,
+			})
+			.then((response) => {
 				console.log(response.data);
 
 				const todosState = [...this.state.todos];
@@ -75,13 +79,14 @@ class TodoContainer extends React.Component {
 				this.setState({
 					todos: todosState,
 					// TASK IS LOADING MESSAGE
-					isLoading: false
-				})
+					isLoading: false,
+				});
 			})
-			.catch(err => {
-				// Extrem simples Error-Handling
-				// Mehr hierzu:https://www.intricatecloud.io/2020/03/how-to-handle-api-errors-in-your-web-app-using-axios/
-				alert('Beim hinzufügen gab es einen Fehler: ' + err.response)
+			.catch((err) => {
+				// SIMPLE Error-Handling
+				// MORE:
+				// https://www.intricatecloud.io/2020/03/how-to-handle-api-errors-in-your-web-app-using-axios/
+				alert("Beim hinzufügen gab es einen Fehler: " + err.response);
 				console.error(err);
 			});
 
@@ -105,17 +110,55 @@ class TodoContainer extends React.Component {
 
 	// DELETE TASK
 	deleteTask = (id) => {
-		const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
+		this.setState({ isLoading: true });
+		axios
+			.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+			.then((response) => {
+				console.log(response);
+				// DELETE TASK
+				const updatedTodosArray = this.state.todos.filter(
+					(item) => item.id !== id
+				);
 
-		this.setState({
-			todos: updatedTodosArray,
-		});
+				this.setState({
+					todos: updatedTodosArray,
+					isLoading: false,
+				});
+			})
+			// .then((response) => {
+			// 	console.log(response.data);
+
+			// 	// const todosState = [...this.state.todos];
+			// 	// todosState.unshift(response.data);
+
+			// 	// this.setState({
+			// 	// 	todos: response.data,
+			// 	// 	// TASK IS LOADING MESSAGE
+			// 	// 	isLoading: false,
+			// 	// });
+			// })
+			.catch((err) => {
+				// SIMPLE Error-Handling
+				// MORE:
+				// https://www.intricatecloud.io/2020/03/how-to-handle-api-errors-in-your-web-app-using-axios/
+				alert("Beim entfernen gab es einen Fehler: " + err.response);
+				console.error(err);
+			});
+
+		// const updatedTodosArray = this.state.todos.filter((item) => item.id !== id);
+
+		// this.setState({
+		// 	todos: updatedTodosArray,
+		// });
 	};
 
 	render() {
 		// console.log("Component render");
 		return (
-			<div style={ this.state.isLoading ? {opacity: 0.3} : null}>
+			<div style={this.state.isLoading ? { opacity: 0.3 } : null}>
+				{/* HEADER */}
+				<Header timeToGetBusy />
+
 				{/* TASK INPUT */}
 				<Form addTaskItem={this.addTaskItem} />
 

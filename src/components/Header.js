@@ -9,6 +9,7 @@ const Header = () => {
 	return (
 		<div>
 			<h1 style={h1Style}>todo</h1>
+			<p style={h1Style}>Time to get busy!</p>
 			<h2
 				style={{
 					textAlign: "center",

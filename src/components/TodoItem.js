@@ -1,36 +1,51 @@
 import React from "react";
 import "../css/todoItem.scss";
 
+// const completedStyle = {
+// 	fontStyle: "italic",
+// 	color: "#d35e0f",
+// 	opacity: 0.4,
+// 	textDecoration: "line-through",
+// };
+
 // FUNCTIONAL COMPONENT
-const TodoItem = (props) => {
+class TodoItem extends React.component {
 	// PROPS WRITING ALTERNATIVE
 	// const { completed, handleChange, deleteTodoHandler, title, id } = props;
-	return (
-		<li className="li-task">
-			{/* ALTERNATIVE TO IN-LINE STYLE */}
-			<span className={props.completed ? "completed-item" : null}>
-				{props.title}
-			</span>
+	// constructor(props) {
+    //     super(props);
+    // }
 
-			<input
-				className="check-box"
-				type="checkbox"
-				checked={props.completed}
-				onChange={() => {
-					props.taskStatus(props.id);
-				}}
-			></input>
 
-			<button
-				// onClick={props.deleteTask}
-				onClick={() => {
-					props.deleteTask(props.id);
-				}}
-			>
-				x
-			</button>
-		</li>
-	);
-};
+	render() {
+		const props = this.props;
+		return (
+			<li className="li-task">
+				{/* ALTERNATIVE TO IN-LINE STYLE */}
+				<span className={props.completed ? "completed-item" : null}>
+					{this.props.title}
+				</span>
+
+				<input
+					className="check-box"
+					type="checkbox"
+					checked={this.props.completed}
+					onChange={() => {
+						this.props.taskStatus(this.props.id);
+					}}
+				></input>
+
+				<button
+					// onClick={this.props.deleteTask}
+					onClick={() => {
+						this.props.deleteTask(this.props.id);
+					}}
+				>
+					x
+				</button>
+			</li>
+		);
+	}
+}
 
 export default TodoItem;

@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import Form from "./Form";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
 class TodoContainer extends React.Component {
@@ -20,16 +20,17 @@ class TodoContainer extends React.Component {
 				// 	completed: false,
 				// },
 			],
+			isLoading: false
 		};
 	}
 
 	componentDidMount() {
 		// console.log("Component did mount");
 		axios
-			// .get("https://jsonplaceholder.typicode.com/todos", {
-			// 	params: { _limit: 10 },
-			// })
-			.get("http://localhost:3001/Tasks")
+			.get("https://jsonplaceholder.typicode.com/todos", {
+				params: { _limit: 10 },
+			})
+			// .get("http://localhost:3001/Tasks")
 			.then((response) => {
 				console.log(response.data);
 				// ADD JSON TODO
@@ -46,7 +47,7 @@ class TodoContainer extends React.Component {
 	// TASK CHECKBOX
 	taskStatus = (id) => {
 		const updatedTodosArr = this.state.todos.map((todo) => {
-			if (todo.id === id) {
+			if (todo._id === id) {
 				todo.completed = !todo.completed;
 			}
 			return todo;
@@ -59,21 +60,47 @@ class TodoContainer extends React.Component {
 
 	// ADD TASK
 	addTaskItem = (title) => {
-		// CURRENT TASK AND STATE TODOS
-		const currentTask = {
-			id: uuidv4(),
+		// TASK IS LOADING MESSAGE
+		this.setState({ isLoading: true });
+		axios.post("https://jsonplaceholder.typicode.com/todos", {
 			title: title,
 			completed: false,
-		};
-		const todosState = [...this.state.todos];
+		})
+			.then(response => {
+				console.log(response.data);
+
+				const todosState = [...this.state.todos];
+				todosState.unshift(response.data);
+
+				this.setState({
+					todos: todosState,
+					// TASK IS LOADING MESSAGE
+					isLoading: false
+				})
+			})
+			.catch(err => {
+				// Extrem simples Error-Handling
+				// Mehr hierzu:https://www.intricatecloud.io/2020/03/how-to-handle-api-errors-in-your-web-app-using-axios/
+				alert('Beim hinzufügen gab es einen Fehler: ' + err.response)
+				console.error(err);
+			});
+
+		return;
+		// CURRENT TASK AND STATE TODOS
+		// const currentTask = {
+		// 	id: uuidv4(),
+		// 	title: title,
+		// 	completed: false,
+		// };
+		// const todosState = [...this.state.todos];
 
 		// PUSH INTO LIST
-		todosState.push(currentTask);
+		// todosState.push(currentTask);
 
 		// RESET COMMENT AND NAME IN STATE
-		this.setState({
-			todos: todosState,
-		});
+		// this.setState({
+		// 	todos: todosState,
+		// });
 	};
 
 	// DELETE TASK
@@ -88,9 +115,12 @@ class TodoContainer extends React.Component {
 	render() {
 		// console.log("Component render");
 		return (
-			<div>
+			<div style={ this.state.isLoading ? {opacity: 0.3} : null}>
 				{/* TASK INPUT */}
 				<Form addTaskItem={this.addTaskItem} />
+
+				{/* TASK IS LOADING MESSAGE */}
+				{this.state.isLoading ? <p>Task is loading...</p> : null}
 
 				{/* TASK OUTPUT */}
 				<ul className="todo-list">

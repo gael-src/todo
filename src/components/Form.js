@@ -25,7 +25,7 @@ const Form = (props) => {
 
 		// CHECK FOR @ SIGN
 		if (title.includes("@")) {
-			setInvalidCharacter(true);
+			return setInvalidCharacter(true);
 		} else {
 			setInvalidCharacter(false);
 		}

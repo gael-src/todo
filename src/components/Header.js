@@ -1,5 +1,5 @@
 import React from "react";
-import headerPics from "../assets/images/jonathan-bean-unsplash.jpg";
+import headerPics from "../assets/images/todo-illustration.jpg";
 
 const Header = (props) => {
 	const h1Style = {

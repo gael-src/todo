@@ -17,6 +17,12 @@ class TodoItem extends React.Component {
 	// PROPS WRITING ALTERNATIVE
 	// const { completed, handleChange, deleteTodoHandler, title, id } = props;
 
+	// USEEFFECT - HOOK FOR : 
+	// COMPONENTDIDMOUNT - COMPONENTDIDUPDATE - COMPONENTWILLUNMOUNT
+	// useEffect(() => {
+	// 	console.log("useEffect function from Form triggered")
+	// })
+
 	render() {
 		const props = this.props;
 		return (

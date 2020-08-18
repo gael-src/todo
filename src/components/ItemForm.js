@@ -1,7 +1,7 @@
 // import React, { Component, useState } from "react";
-import React, { useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 
-const Form = (props) => {
+const ItemForm = (props) => {
 	console.log(useState("hello"));
 
 	const [title, setTitle] = useState("");
@@ -12,6 +12,12 @@ const Form = (props) => {
 	// const onChangeHandler = (e) => {
 	// 	setTitle(e.target.value);
 	// };
+
+	// USEEFFECT - HOOK FOR : 
+	// COMPONENTDIDMOUNT - COMPONENTDIDUPDATE - COMPONENTWILLUNMOUNT
+	useEffect(() => {
+		console.log("useEffect function from Form triggered")
+	})
 
 	// ADD TASK
 	const addTask = (event) => {
@@ -56,4 +62,4 @@ const Form = (props) => {
 	);
 };
 
-export default Form;
+export default ItemForm;

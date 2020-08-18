@@ -1,9 +1,8 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import Form from "./Form";
-import Header from "./Header";
-// import { v4 as uuidv4 } from "uuid";
+import ItemForm from "./ItemForm";
 import axios from "axios";
+// import { v4 as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
 	constructor(props) {
@@ -22,7 +21,7 @@ class TodoContainer extends React.Component {
 				// },
 			],
 			isLoading: false,
-			timeToGetBusy: false,
+			// timeToGetBusy: false,
 		};
 	}
 
@@ -135,11 +134,8 @@ class TodoContainer extends React.Component {
 		// console.log("Component render");
 		return (
 			<div style={this.state.isLoading ? { opacity: 0.3 } : null}>
-				{/* HEADER */}
-				<Header timeToGetBusy={this.state.timeToGetBusy} />
-
 				{/* TASK INPUT */}
-				<Form addTaskItem={this.addTaskItem} />
+				<ItemForm addTaskItem={this.addTaskItem} />
 
 				{/* TASK IS LOADING MESSAGE */}
 				{this.state.isLoading ? <p>Task is loading...</p> : null}

@@ -1,4 +1,5 @@
 import React from "react";
+import headerPics from "../assets/images/jonathan-bean-unsplash.jpg";
 
 const Header = (props) => {
 	const h1Style = {
@@ -8,6 +9,7 @@ const Header = (props) => {
 	};
 	return (
 		<header>
+			<img className="header-pics" src={headerPics} alt=""/>
 			<h1 style={h1Style}>todo</h1>
 			{props.timeToGetBusy ? <p style={h1Style}>Time to get busy!</p> : null}
 			<h2

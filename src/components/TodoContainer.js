@@ -29,10 +29,13 @@ class TodoContainer extends React.Component {
 	componentDidMount() {
 		// console.log("Component did mount");
 		axios
-			.get("https://jsonplaceholder.typicode.com/todos", {
-				params: { _limit: 10 },
-			})
-			// .get("http://localhost:3001/Tasks")
+			// FETCH JSON PLACEHOLDER 
+			// .get("https://jsonplaceholder.typicode.com/todos", {
+			// 	params: { _limit: 10 },
+			// })
+
+			// FETCH OWN TODO_BACKEND
+			.get("http://localhost:3001/Tasks")
 			.then((response) => {
 				console.log(response.data);
 				// ADD JSON TODO

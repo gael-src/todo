@@ -1,10 +1,38 @@
-commands:
-
-> sudo mongod --port 27018
-
-> PORT=3002 npm start
+# ToDo Frontend
 
 </br>
+
+### Backend Repository:
+
+https://github.com/gael-src/todo-backend
+
+### Frontend Repository:
+
+https://github.com/gael-src/todo-frontend
+
+#### Frontend Deploy GH-Page:
+
+https://gael-src.github.io/todo-frontend/
+
+</br>
+
+#### Commands:
+
+> \$ sudo mongod --port 27018
+
+> \$ npm start
+
+(If port 3000 doesn't work try:)
+
+> \$ PORT=3002 npm start
+
+</br>
+
+</br>
+
+</br>
+
+### Exercise:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -74,5 +102,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-# todo

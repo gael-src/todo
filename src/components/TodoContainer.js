@@ -35,7 +35,8 @@ class TodoContainer extends React.Component {
 			// })
 
 			// FETCH OWN TODO_BACKEND
-			.get("http://localhost:3001/Tasks")
+			// .get("http://localhost:3001/Tasks")
+			.get("https://tasks-src.herokuapp.com/tasks")
 			.then((response) => {
 				console.log(response.data);
 				// ADD JSON TODO

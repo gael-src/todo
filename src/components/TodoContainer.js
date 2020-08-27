@@ -121,7 +121,7 @@ class TodoContainer extends React.Component {
 				console.log(response);
 
 				const updatedTodosArr = this.state.todos.filter(
-					(todo) => todo.id !== id
+					(todo) => todo._id !== id
 				);
 				this.setState({
 					todos: updatedTodosArr,

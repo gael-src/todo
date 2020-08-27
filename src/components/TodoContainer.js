@@ -135,7 +135,7 @@ class TodoContainer extends React.Component {
 	};
 
 	render() {
-		// console.log("Component render");
+		console.log("todooooooooooComponent render", this.state.todos);
 		return (
 			<div style={this.state.isLoading ? { opacity: 0.3 } : null}>
 				{/* TASK INPUT */}
@@ -148,10 +148,10 @@ class TodoContainer extends React.Component {
 				<ul className="todo-list">
 					{this.state.todos.map((todo) => (
 						<TodoItem
-							key={todo.id}
+							// key={todo._id}
 							title={todo.title}
 							completed={todo.completed}
-							id={todo.id}
+							id={todo._id}
 							taskStatus={this.taskStatus}
 							deleteTask={this.deleteTask}
 						/>

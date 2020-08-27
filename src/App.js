@@ -3,6 +3,7 @@ import "./css/App.scss";
 import Header from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
 import Footer from "./components/Footer";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -12,16 +13,18 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			<div className="App">
-				{/* HEADER */}
-				<Header timeToGetBusy={this.state.timeToGetBusy} />
+			// <Router>
+				<div className="App">
+					{/* HEADER */}
+					<Header timeToGetBusy={this.state.timeToGetBusy} />
 
-				{/* MAIN TASK */}
-				<TodoContainer text="Text as props" />
+					{/* MAIN TASK */}
+					<TodoContainer text="Text as props" />
 
-				{/* FOOTER */}
-				<Footer />
-			</div>
+					{/* FOOTER */}
+					<Footer />
+				</div>
+			// </Router>
 		);
 	}
 }

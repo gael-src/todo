@@ -27,15 +27,15 @@ class App extends React.Component {
 					<Switch>
 						{/* MAIN TASK */}
 						{/* LAST ELEMENT BECAUSE OF / OR USE "EXACT" ATTRIBUTE */}
-						<Route path="/" exact component={TodoContainer} />
+						<Route path="/todo-frontend/" exact component={TodoContainer} />
 						{/* <TodoContainer text="Text as props" /> */}
 
 						{/* MAIN TASK */}
-						<Route path="/help" exact component={Help} />
+						<Route path="/todo-frontend/help" exact component={Help} />
 						{/* <Help /> */}
 
 						{/* MAIN TASK */}
-						<Route path="/Impressum" exact component={Impressum} />
+						<Route path="/todo-frontend/Impressum" exact component={Impressum} />
 						{/* <Impressum /> */}
 					</Switch>
 				</div>

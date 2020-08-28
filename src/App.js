@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Header from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
 import Help from "./components/Help";
+import Contact from "./components/Contact";
 import Impressum from "./components/Impressum";
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
 
 						{/* MAIN TASK */}
 						<Route path="/todo-frontend/help" exact component={Help} />
+						<Route path="/todo-frontend/help/contact" exact component={Contact} />
 						{/* <Help /> */}
 
 						{/* MAIN TASK */}

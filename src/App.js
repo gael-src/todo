@@ -1,9 +1,12 @@
 import React from "react";
 import "./css/App.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from "./components/Nav";
 import Header from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
-import Footer from "./components/Footer";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Help from "./components/Help";
+import Impressum from "./components/Impressum";
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,18 +16,30 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			// <Router>
+			<Router>
 				<div className="App">
+					{/* NAV */}
+					<Nav />
+
 					{/* HEADER */}
 					<Header timeToGetBusy={this.state.timeToGetBusy} />
 
-					{/* MAIN TASK */}
-					<TodoContainer text="Text as props" />
+					<Switch>
+						{/* MAIN TASK */}
+						{/* LAST ELEMENT BECAUSE OF / OR USE "EXACT" ATTRIBUTE */}
+						<Route path="/" exact component={TodoContainer} />
+						{/* <TodoContainer text="Text as props" /> */}
 
-					{/* FOOTER */}
-					<Footer />
+						{/* MAIN TASK */}
+						<Route path="/help" exact component={Help} />
+						{/* <Help /> */}
+
+						{/* MAIN TASK */}
+						<Route path="/Impressum" exact component={Impressum} />
+						{/* <Impressum /> */}
+					</Switch>
 				</div>
-			// </Router>
+			</Router>
 		);
 	}
 }

@@ -1,32 +1,29 @@
-// import React from "react";
-// import "./css/App.scss";
-// import Header from "./components/Header";
-// import TodoContainer from "./components/TodoContainer";
-// import Footer from "./components/Footer";
-// // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// class App extends React.Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			timeToGetBusy: false,
-// 		};
-// 	}
-// 	render() {
-// 		return (
-// 			// <Router>
-// 				<div className="App">
-// 					{/* HEADER */}
-// 					<Header timeToGetBusy={this.state.timeToGetBusy} />
+import React from "react";
+import { Link } from "react-router-dom";
 
-// 					{/* MAIN TASK */}
-// 					<TodoContainer text="Text as props" />
+function Nav() {
+	return (
+		<nav>
+			<h3>task-src</h3>
+			<ul>
+				<li>
+					<Link className="nav-links" to="/">
+						Home
+					</Link>
+				</li>
+				<li>
+					<Link className="nav-links" to="/help">
+						Help
+					</Link>
+				</li>
+				<li>
+					<Link className="nav-links" to="/Impressum">
+						Impressum
+					</Link>
+				</li>
+			</ul>
+		</nav>
+	);
+}
 
-// 					{/* FOOTER */}
-// 					<Footer />
-// 				</div>
-// 			// </Router>
-// 		);
-// 	}
-// }
-
-// export default App;
+export default Nav;

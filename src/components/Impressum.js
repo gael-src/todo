@@ -1,15 +1,21 @@
-// import React from "react";
+import React from "react";
 
-// const Footer = (props) => {
-// 	return (
-// 		<footer>
-// 			<h2>Footer</h2>
+const Impressum = () => {
+	return (
+		<section>
+			<h2>Impressum</h2>
 
-// 			<a href="https://www.freepik.com/vectors/data">
-// 				Data vector created by stories - www.freepik.com
-// 			</a>
-// 		</footer>
-// 	);
-// };
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Id minima sequi
+				eius omnis placeat. Sit assumenda iure architecto, earum, consequuntur
+				aliquam molestias modi dicta repellat atque unde corporis rerum! Omnis.
+			</p>
 
-// export default Footer;
+			<a href="https://www.freepik.com/vectors/data">
+				Data vector created by stories - www.freepik.com
+			</a>
+		</section>
+	);
+};
+
+export default Impressum;

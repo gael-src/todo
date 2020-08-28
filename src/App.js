@@ -25,21 +25,19 @@ class App extends React.Component {
 					{/* HEADER */}
 					<Header timeToGetBusy={this.state.timeToGetBusy} />
 
-					<Switch>
-						{/* MAIN TASK */}
-						{/* LAST ELEMENT BECAUSE OF / OR USE "EXACT" ATTRIBUTE */}
-						<Route path="/todo-frontend/" exact component={TodoContainer} />
-						{/* <TodoContainer text="Text as props" /> */}
+					{/* <Switch> */}
+					{/* HOME */}
+					<Route path="/todo-frontend/" exact component={TodoContainer} />
 
-						{/* MAIN TASK */}
-						<Route path="/todo-frontend/help" exact component={Help} />
-						<Route path="/todo-frontend/help/contact" exact component={Contact} />
-						{/* <Help /> */}
+					{/* HELP */}
+					<Route path="/todo-frontend/help" component={Help} />
 
-						{/* MAIN TASK */}
-						<Route path="/todo-frontend/Impressum" exact component={Impressum} />
-						{/* <Impressum /> */}
-					</Switch>
+					{/* HELP / CONTACT */}
+					<Route path="/todo-frontend/help/contact" component={Contact} />
+
+					{/* IMPRESSUM */}
+					<Route path="/todo-frontend/Impressum" exact component={Impressum} />
+					{/* </Switch> */}
 				</div>
 			</Router>
 		);

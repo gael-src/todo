@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Help = () => {
 	return (
@@ -9,6 +10,9 @@ const Help = () => {
 				eius omnis placeat. Sit assumenda iure architecto, earum, consequuntur
 				aliquam molestias modi dicta repellat atque unde corporis rerum! Omnis.
 			</p>
+			<Link className="nav-links" to="/todo-frontend/help/contact">
+				Contact
+			</Link>
 		</section>
 	);
 };

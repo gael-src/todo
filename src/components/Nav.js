@@ -17,11 +17,6 @@ function Nav() {
 					</Link>
 				</li>
 				<li className="li-nav">
-					<Link className="nav-links" to="/todo-frontend/help/contact">
-						Contact
-					</Link>
-				</li>
-				<li className="li-nav">
 					<Link className="nav-links" to="/todo-frontend/Impressum">
 						Impressum
 					</Link>

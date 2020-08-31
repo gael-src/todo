@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/App.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
@@ -11,15 +11,23 @@ import ThemeContext from "./context/ThemeContext";
 import ThemeToggler from "./components/ThemeToggler";
 
 class App extends React.Component {
+	// function App() {
 	constructor(props) {
 		super(props);
 		this.state = {
 			timeToGetBusy: false,
+			theme: "light",
 		};
 	}
+
+	setThemeHandler = () => {
+		this.setState({ theme: "dark" });
+	};
+	// const themeStateHook = useState("light");
 	render() {
 		return (
 			<Router>
+				{/* <ThemeContext.Provider value="light"> */}
 				<ThemeContext.Provider value="dark">
 					<div className="App">
 						{/* NAV */}

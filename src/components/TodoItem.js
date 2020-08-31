@@ -77,7 +77,7 @@ class TodoItem extends React.Component {
 		} else if (this.state.priority === "low") {
 			titleStyle = lowPriority;
 		}
-		const isDark = this.context === "dark" ? true : false;
+		const isDark = this.context[0] === "dark" ? true : false;
 
 		return (
 			<li className="li-task">

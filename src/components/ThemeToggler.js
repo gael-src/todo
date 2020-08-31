@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
 
 const styling = {
@@ -8,9 +8,9 @@ const styling = {
 const ThemeToggler = (props) => {
 	// V1
 	const context = useContext(ThemeContext);
-
-	//V2 also possible (even maybe better) 
-    // const [theme, setTheme] = useContext(ThemeContext);
+	// debugger;
+	//V2 also possible (even maybe better)
+	// const [theme, setTheme] = useContext(ThemeContext);
 
 	const togglerThemHandler = () => {
 		// V1
@@ -19,8 +19,7 @@ const ThemeToggler = (props) => {
 
 		// V2
 		// const reversedThemeV2 = theme === 'dark' ? 'light' : 'dark';
-        // setTheme(reversedThemeV2);
-
+		// setTheme(reversedThemeV2);
 	};
 	return (
 		<button style={styling} onClick={togglerThemHandler}>

@@ -21,14 +21,19 @@ class App extends React.Component {
 	}
 
 	setThemeHandler = () => {
-		this.setState({ theme: "dark" });
+		// this.setState({ theme: this.state.theme === "dark" ? "light" : "dark" });
+		this.setState((currentState) => {
+			return {
+				theme: currentState.theme === "dark" ? "light" : "dark",
+			};
+		});
 	};
 	// const themeStateHook = useState("light");
 	render() {
 		return (
 			<Router>
 				{/* <ThemeContext.Provider value="light"> */}
-				<ThemeContext.Provider value="dark">
+				<ThemeContext.Provider value={[this.state.theme, this.setThemeHandler]}>
 					<div className="App">
 						{/* NAV */}
 						<Nav />

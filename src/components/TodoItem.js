@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/todoItem.scss";
 import Priority from "./Priority";
+import ThemeContext from "../context/ThemeContext";
 
 // const completedStyle = {
 // 	fontStyle: "italic",
@@ -8,6 +9,12 @@ import Priority from "./Priority";
 // 	opacity: 0.4,
 // 	textDecoration: "line-through",
 // };
+
+const darkButtonStyle = {
+	backgroundColor: "black",
+	border: "none",
+	color: "white",
+};
 
 // FUNCTIONAL COMPONENT
 class TodoItem extends React.Component {
@@ -17,6 +24,9 @@ class TodoItem extends React.Component {
 			priority: null,
 		};
 	}
+
+	// CONNECT CONTEXT
+	static contextType = ThemeContext;
 
 	priorityHandleChange = (e) => {
 		console.log("priorityHandleChange");
@@ -67,7 +77,8 @@ class TodoItem extends React.Component {
 		} else if (this.state.priority === "low") {
 			titleStyle = lowPriority;
 		}
-		
+		const isDark = this.context === "dark" ? true : false;
+
 		return (
 			<li className="li-task">
 				{/* ALTERNATIVE TO IN-LINE STYLE */}
@@ -93,9 +104,12 @@ class TodoItem extends React.Component {
 					onClick={() => {
 						this.props.deleteTask(this.props.id);
 					}}
+					style={isDark ? darkButtonStyle : null}
 				>
-					x
+					{isDark ? "Destroy!" : "Delete"}
 				</button>
+				{/* CONTEXT VALUE */}
+				{/* <span>{this.context}</span> */}
 				<Priority
 					priorityHandleChange={this.priorityHandleChange}
 					priority={this.state.priority}

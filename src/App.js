@@ -7,6 +7,8 @@ import TodoContainer from "./components/TodoContainer";
 import Help from "./components/Help";
 import Contact from "./components/Contact";
 import Impressum from "./components/Impressum";
+import ThemeContext from "./context/ThemeContext";
+import ThemeToggler from "./components/ThemeToggler";
 
 class App extends React.Component {
 	constructor(props) {
@@ -18,27 +20,34 @@ class App extends React.Component {
 	render() {
 		return (
 			<Router>
-				<div className="App">
-					{/* NAV */}
-					<Nav />
+				<ThemeContext.Provider value="dark">
+					<div className="App">
+						{/* NAV */}
+						<Nav />
 
-					{/* HEADER */}
-					<Header timeToGetBusy={this.state.timeToGetBusy} />
+						{/* HEADER */}
+						<Header timeToGetBusy={this.state.timeToGetBusy} />
 
-					{/* <Switch> */}
-					{/* HOME */}
-					<Route path="/todo-frontend/" exact component={TodoContainer} />
+						{/* <Switch> */}
+						{/* HOME */}
+						<Route path="/todo-frontend/" exact component={TodoContainer} />
 
-					{/* HELP */}
-					<Route path="/todo-frontend/help" component={Help} />
+						{/* HELP */}
+						<Route path="/todo-frontend/help" component={Help} />
 
-					{/* HELP / CONTACT */}
-					<Route path="/todo-frontend/help/contact" component={Contact} />
+						{/* HELP / CONTACT */}
+						<Route path="/todo-frontend/help/contact" component={Contact} />
 
-					{/* IMPRESSUM */}
-					<Route path="/todo-frontend/Impressum" exact component={Impressum} />
-					{/* </Switch> */}
-				</div>
+						{/* IMPRESSUM */}
+						<Route
+							path="/todo-frontend/Impressum"
+							exact
+							component={Impressum}
+						/>
+						{/* </Switch> */}
+						<ThemeToggler>Toggle Theme</ThemeToggler>
+					</div>
+				</ThemeContext.Provider>
 			</Router>
 		);
 	}

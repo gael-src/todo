@@ -33,6 +33,7 @@ const ThemeToggler = (props) => {
 			onClick={togglerThemHandler}
 		>
 			{props.children}
+			{isDark ? "Polite Version" : "Unpolite Version"}
 		</button>
 	);
 };

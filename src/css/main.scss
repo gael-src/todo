@@ -3,11 +3,16 @@ $color-black: #1f1f1f;
 body {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 50px 100px;
+	padding: 0;
 }
 
 .App {
 	text-align: center;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
 }
 
 .todo-list {
@@ -37,6 +42,10 @@ body {
 
 .task-form > * {
 	margin: 10px;
+}
+
+button, input, select  {
+	padding: 5px 15px;
 }
 
 // .check-box {

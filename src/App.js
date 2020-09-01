@@ -10,6 +10,10 @@ import Impressum from "./components/Impressum";
 import ThemeContext from "./context/ThemeContext";
 import ThemeToggler from "./components/ThemeToggler";
 
+const darkStyle = {
+	// backgroundColor: "yellow",
+};
+
 class App extends React.Component {
 	// function App() {
 	constructor(props) {
@@ -19,6 +23,9 @@ class App extends React.Component {
 			theme: "light",
 		};
 	}
+
+	// CONNECT CONTEXT
+	static contextType = ThemeContext;
 
 	setThemeHandler = () => {
 		// this.setState({ theme: this.state.theme === "dark" ? "light" : "dark" });
@@ -30,11 +37,13 @@ class App extends React.Component {
 	};
 	// const themeStateHook = useState("light");
 	render() {
+		// CONNECT CONTEXT
+		const isDark = this.context[0] === "dark" ? true : false;
 		return (
 			<Router>
 				{/* <ThemeContext.Provider value="light"> */}
 				<ThemeContext.Provider value={[this.state.theme, this.setThemeHandler]}>
-					<div className="App">
+					<div className="App" style={this.state.theme ? darkStyle : "light"}>
 						{/* NAV */}
 						<Nav />
 
@@ -58,7 +67,8 @@ class App extends React.Component {
 							component={Impressum}
 						/>
 						{/* </Switch> */}
-						<ThemeToggler>Toggle Theme</ThemeToggler>
+						<ThemeToggler />
+						{/* Toggle Theme</ThemeToggler> */}
 					</div>
 				</ThemeContext.Provider>
 			</Router>

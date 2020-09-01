@@ -27,7 +27,11 @@ const ThemeToggler = (props) => {
 	};
 
 	return (
-		<button style={isDark ? darkStyle : null} onClick={togglerThemHandler}>
+		<button
+			className="toggler"
+			style={isDark ? darkStyle : null}
+			onClick={togglerThemHandler}
+		>
 			{props.children}
 		</button>
 	);

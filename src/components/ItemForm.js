@@ -2,7 +2,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
 
-
+const darkStyle = {
+	color: "white",
+	backgroundColor: "black",
+	border: "black"
+}
 
 const ItemForm = (props) => {
 	console.log(useState("hello"));
@@ -13,7 +17,6 @@ const ItemForm = (props) => {
 
 	const context = useContext(ThemeContext);
 	const isDark = context[0] === "dark" ? true : false;
-
 
 	// HANDLER
 	// const onChangeHandler = (e) => {
@@ -61,8 +64,6 @@ const ItemForm = (props) => {
 		}
 	};
 
-	
-
 	return (
 		<>
 			{/* Context: {context} */}
@@ -73,7 +74,9 @@ const ItemForm = (props) => {
 				{/* {isDark ? null : button} */}
 				{correctLength ? <p>Task musst be between 3 and 25 length</p> : null}
 				{invalidCharacter ? <p>Please don't use @ in your Todos!</p> : null}
-				<button onClick={submitTask}>Submit</button>
+				<button onClick={submitTask} style={isDark ? darkStyle : null}>
+					Submit
+				</button>
 			</form>
 		</>
 	);

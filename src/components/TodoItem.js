@@ -78,6 +78,8 @@ class TodoItem extends React.Component {
 			titleStyle = lowPriority;
 		}
 		const isDark = this.context[0] === "dark" ? true : false;
+		const titleSmall = this.props.title;
+		const titleCap = this.props.title.toUpperCase();
 
 		return (
 			<li className="li-task">
@@ -87,7 +89,7 @@ class TodoItem extends React.Component {
 					className={props.completed ? "completed-item" : null}
 					style={titleStyle}
 				>
-					{this.props.title}
+					{isDark ? titleCap : titleSmall}
 				</span>
 
 				<input

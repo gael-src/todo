@@ -18,9 +18,8 @@ class Priority extends React.Component {
 
 	render() {
 		// CONNECT CONTEXT
-		// const isDark = this.context === "dark" ? true : false;
-		const isDark = this.context === "dark" ?? null;
-
+		const isDark = this.context[0] === "dark" ? true : false;
+		// const isDark = this.context === "dark" ?? null;
 		return (
 			<select
 				name="priority"

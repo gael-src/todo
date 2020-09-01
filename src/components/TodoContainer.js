@@ -135,7 +135,7 @@ class TodoContainer extends React.Component {
 	};
 
 	render() {
-		console.log("todooooooooooComponent render", this.state.todos);
+		// console.log("todooooooooooComponent render", this.state.todos);
 		return (
 			<div style={this.state.isLoading ? { opacity: 0.3 } : null}>
 				{/* TASK INPUT */}

@@ -1,5 +1,7 @@
-import React from "react";
-import headerPics from "../assets/images/todo-illustration.jpg";
+import React, {useContext} from "react";
+import headerPicsLight from "../assets/images/todo-illustration.jpg";
+import headerPicsDark from "../assets/images/shia.jpg";
+import ThemeContext from "../context/ThemeContext";
 
 const Header = (props) => {
 	const h1Style = {
@@ -7,9 +9,18 @@ const Header = (props) => {
 		margin: "30px",
 		color: "green",
 	};
+	// CONNECT CONTEXT
+	const context = useContext(ThemeContext);
+	const isDark = context[0] === "dark" ? true : false;
 	return (
 		<header>
-			<img className="header-pics" src={headerPics} alt="" />
+			{isDark ? (
+				<img className="header-pics" src={headerPicsDark} alt="" />
+			) : (
+				<img className="header-pics" src={headerPicsLight} alt="" />
+			)}
+			{/* <img className="header-pics" src={headerPicsLight} alt="" /> */}
+			{/* <img className="header-pics" src={headerPicsDark} alt="" /> */}
 			{props.timeToGetBusy ? <p style={h1Style}>Time to get busy!</p> : null}
 		</header>
 	);

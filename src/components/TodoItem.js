@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/todoItem.scss";
+import "../css/todoItem.css";
 import Priority from "./Priority";
 import ThemeContext from "../context/ThemeContext";
 

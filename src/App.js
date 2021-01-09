@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./css/App.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import "./css/App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
@@ -38,7 +38,7 @@ class App extends React.Component {
 	// const themeStateHook = useState("light");
 	render() {
 		// CONNECT CONTEXT
-		const isDark = this.context[0] === "dark" ? true : false;
+		// const isDark = this.context[0] === "dark" ? true : false;
 		return (
 			<Router>
 				{/* <ThemeContext.Provider value="light"> */}
